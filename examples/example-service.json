@@ -1,0 +1,45 @@
+{
+  "service": {
+    "name": "Example Service",
+    "description": "A service for managing example services at the Big Example Corporation",
+    "slug": "example-service",
+    "environments": [
+      {
+        "type": "production",
+        "name": "API",
+        "url": "https://api.example.com/v1",
+        "healthcheckEndpoint": "https://api.example.com/v1/healthcheck"
+      },
+      {
+        "type": "production",
+        "name": "UI",
+        "url": "https://www.example.com/"
+      },
+      {
+        "type": "staging",
+        "name": "API",
+        "url": "https://api.staging.example.com/v1",
+        "healthcheckEndpoint": "https://api.staging.example.com/v1/healthcheck"
+      },
+      {
+        "type": "staging",
+        "name": "UI",
+        "url": "https://staging.example.com/"
+      }
+    ],
+    "monitoring": {
+      "logs": [
+        {
+          "label": "Cloudwatch (Production)",
+          "url": "https://www.example.com/cloudwatch"
+        }
+      ],
+      "dashboards": [
+        {
+          "label": "Cloudwatch (Production)",
+          "url": "https://www.example.com/cloudwatch"
+        }
+      ]
+    }
+  }
+}

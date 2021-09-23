@@ -1,0 +1,37 @@
+{
+  "name": "incident-management-docs-generator",
+  "version": "1.0.0",
+  "bin": "dist/bin/generate.ts",
+  "license": "MIT",
+  "scripts": {
+    "demo": "rm -rf ./example-service-docs && ts-node src/bin/generate.ts ./examples/example-service.json -o example-service-docs",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "files": [
+    "files",
+    "dist",
+    "package.json",
+    "README.md",
+    "example-service.json"
+  ],
+  "devDependencies": {
+    "@types/command-line-args": "^5.2.0",
+    "@types/fs-extra": "^9.0.12",
+    "@types/jest": "^27.0.2",
+    "@types/mock-fs": "^4.13.1",
+    "@types/node": "^16.9.4",
+    "jest": "^27.2.1",
+    "mock-fs": "^5.1.0",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "command-line-args": "^5.2.0",
+    "fs-extra": "^10.0.0",
+    "handlebars": "^4.7.7",
+    "joi": "^17.4.2"
+  }
+}

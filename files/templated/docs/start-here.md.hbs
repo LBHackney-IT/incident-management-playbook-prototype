@@ -1,0 +1,49 @@
+---
+sidebar_position: 1
+title: 🌟 Start here 🌟
+slug: /
+---
+
+# Quick start for {{service.name}}
+
+## Service overview
+
+### Environments
+
+| Environment | Service | URL |
+| ----------- | ------- | --- |
+{{#each service.environments}}
+| `{{type}}` | {{name}} | {{url}} |
+{{/each}}
+
+### Monitoring and observability
+
+{{#if service.monitoring.logs}}
+#### Logs
+
+Logs for this service can be found at:
+
+{{#each service.monitoring.logs}}
+* [{{#if label}}{{label}}{{else}}{{url}}{{/if}}]({{url}})
+{{/each}}
+{{/if}}
+
+{{#if service.monitoring.dashboards}}
+#### Dashboards
+
+Dashboards for this service can be found at:
+
+{{#each service.monitoring.dashboards}}
+* [{{#if label}}{{label}}{{else}}{{url}}{{/if}}]({{url}})
+{{/each}}
+{{/if}}
+
+## Help, we are dealing with an incident..!
+
+If you're dealing with a live incident, take a look at the Incident Management Process section – that should get you started.
+
+>Good luck 🤞!
+
+## What is incident management?
+
+If you want to know more about incident management, head over to the Overview section for a quick introduction.

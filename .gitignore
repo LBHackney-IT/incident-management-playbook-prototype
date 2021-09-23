@@ -1,0 +1,11 @@
+# Node
+node_modules
+
+# macOS
+.DS_Store
+
+# Dist
+dist
+
+# Demo
+example-service-docs
