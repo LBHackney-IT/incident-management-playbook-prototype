@@ -1,0 +1,83 @@
+version: 2.1
+
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node
+
+references:
+  workspace_root: &workspace_root "~"
+  attach_workspace: &attach_workspace
+    attach_workspace:
+      at: *workspace_root
+
+jobs:
+  install-dependencies:
+    executor: node-executor
+    steps:
+      - *attach_workspace
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn --frozen-lockfile
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+      - persist_to_workspace:
+          root: *workspace_root
+          paths: .
+
+  unit-tests:
+    executor: node-executor
+    steps:
+      - *attach_workspace
+      - run:
+          name: Run tests
+          command: yarn test --ci --reporters=default --reporters=jest-junit
+      - store_test_results:
+          path: .
+
+  build-library:
+    executor: node-executor
+    steps:
+      - *attach_workspace
+      - run:
+          name: Build library
+          command: yarn build
+
+  build-example:
+    executor: node-executor
+    steps:
+      - *attach_workspace
+      - run:
+          name: Generate example site
+          command: yarn demo
+      - run:
+          name: Build example site
+          working_directory: ./example-service-docs
+          command: yarn && yarn build
+      - run:
+          name: Zip example site
+          working_directory: ./example-service-docs/build
+          command: zip -r ../../output.zip *
+      - store_artifacts:
+          path: ./output.zip
+          destination: output.zip
+
+workflows:
+  version: 2
+  continuous-delivery:
+    jobs:
+      - install-dependencies
+      - unit-tests:
+          requires:
+            - install-dependencies
+      - build-library:
+          requires:
+            - unit-tests
+      - build-example:
+          requires:
+            - unit-tests
