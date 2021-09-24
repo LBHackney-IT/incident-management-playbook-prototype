@@ -27,6 +27,12 @@
         "url": "https://staging.example.com/"
       }
     ],
+    "repositories": [
+      {
+        "url": "https://www.example.com/service-api",
+        "label": "Service API"
+      }
+    ],
     "monitoring": {
       "logs": [
         {
@@ -40,6 +46,19 @@
           "url": "https://www.example.com/cloudwatch"
         }
       ]
-    }
+    },
+    "contacts": [
+      {
+        "name": "First Last",
+        "role": "Head of Service",
+        "contact": "first.last@hackney.gov.uk"
+      }
+    ],
+    "architecture": [
+      {
+        "url": "https://www.example.com/architecture-diagrams",
+        "label": "Architecture diagrams"
+      }
+    ]
   }
 }

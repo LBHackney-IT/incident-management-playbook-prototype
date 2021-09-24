@@ -14,6 +14,14 @@ export type Configuration = {
       url: string;
       healthcheckEndpoint?: string;
     }[];
+    architecture: {
+      url: string;
+      label: string;
+    }[];
+    repositories: {
+      url: string;
+      label: string;
+    }[];
     monitoring: {
       logs: {
         label: string;
@@ -24,6 +32,11 @@ export type Configuration = {
         url: string;
       }[];
     };
+    contacts: {
+      name: string;
+      role: string;
+      contact: string;
+    }[];
   };
 };
 
@@ -41,6 +54,22 @@ const configSchema = Joi.object<Configuration>({
           name: Joi.string().required(),
           url: Joi.string().required(),
           healthcheckEndpoint: Joi.string(),
+        })
+      )
+      .required(),
+    architecture: Joi.array()
+      .items(
+        Joi.object<Configuration["service"]["architecture"][0]>({
+          label: Joi.string().required(),
+          url: Joi.string().required(),
+        })
+      )
+      .required(),
+    repositories: Joi.array()
+      .items(
+        Joi.object<Configuration["service"]["repositories"][0]>({
+          label: Joi.string().required(),
+          url: Joi.string().required(),
         })
       )
       .required(),
@@ -62,6 +91,15 @@ const configSchema = Joi.object<Configuration>({
         )
         .required(),
     }).required(),
+    contacts: Joi.array()
+      .items(
+        Joi.object<Configuration["service"]["contacts"][0]>({
+          name: Joi.string().required(),
+          role: Joi.string().required(),
+          contact: Joi.string().required(),
+        })
+      )
+      .required(),
   }),
 });
 

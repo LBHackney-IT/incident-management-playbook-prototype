@@ -4,16 +4,34 @@ title: 🌟 Start here 🌟
 slug: /
 ---
 
-# Quick start for {{service.name}}
+# Quick start
 
-## Service overview
+## What is {{service.name}}?
 
-### Environments
+{{service.description}}
+
+{{#if service.architecture}}
+### Architecture
+
+{{#each service.architecture}}
+- [{{label}}]({{url}})
+{{/each}}
+{{/if}}
+
+### Deployed environments
 
 | Environment | Service | URL |
 | ----------- | ------- | --- |
 {{#each service.environments}}
 | `{{type}}` | {{name}} | {{url}} |
+{{/each}}
+
+### Code
+
+| Label | URL |
+| ----- | --- |
+{{#each service.repositories}}
+| {{label}} | {{url}} |
 {{/each}}
 
 ### Monitoring and observability
@@ -35,6 +53,16 @@ Dashboards for this service can be found at:
 
 {{#each service.monitoring.dashboards}}
 * [{{#if label}}{{label}}{{else}}{{url}}{{/if}}]({{url}})
+{{/each}}
+{{/if}}
+
+{{#if service.contacts}}
+### Key contacts
+
+| Name | Role | Contact details |
+| ---- | ---- | --------------- |
+{{#each service.contacts}}
+| {{name}} | {{role}} | {{contact}} |
 {{/each}}
 {{/if}}
 
