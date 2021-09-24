@@ -38,7 +38,7 @@ jobs:
           name: Run tests
           command: yarn test --ci --reporters=default --reporters=jest-junit
       - store_test_results:
-        path: .
+          path: .
 
   build-library:
     executor: node-executor
