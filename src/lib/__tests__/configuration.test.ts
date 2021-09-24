@@ -75,6 +75,12 @@ describe("configuration", () => {
               url: "https://example.com",
             },
           ],
+          repositories: [
+            {
+              url: "https://example.com",
+              label: "Service API",
+            },
+          ],
           monitoring: {
             dashboards: [
               {
@@ -89,6 +95,19 @@ describe("configuration", () => {
               },
             ],
           },
+          architecture: [
+            {
+              label: "Architecture diagrams",
+              url: "https://example.com/architecture-diagrams",
+            },
+          ],
+          contacts: [
+            {
+              name: "First Last",
+              role: "Head of Service",
+              contact: "first.last@example.com",
+            },
+          ],
         },
       };
 
