@@ -1,0 +1,11 @@
+---
+sidebar_position: 2
+---
+
+# Environments
+
+| Environment | Service | URL |
+| ----------- | ------- | --- |
+{{#each service.environments}}
+| `{{type}}` | {{name}} | {{url}} |
+{{/each}}

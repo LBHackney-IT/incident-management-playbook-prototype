@@ -12,8 +12,7 @@
     "files",
     "dist",
     "package.json",
-    "README.md",
-    "example-service.json"
+    "README.md"
   ],
   "devDependencies": {
     "@types/command-line-args": "^5.2.0",

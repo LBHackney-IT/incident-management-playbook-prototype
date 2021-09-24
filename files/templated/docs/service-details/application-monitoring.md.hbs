@@ -1,0 +1,25 @@
+---
+sidebar_position: 4
+---
+
+# Application health monitoring
+
+{{#if service.monitoring.logs}}
+#### Logs
+
+Logs for this service can be found at:
+
+{{#each service.monitoring.logs}}
+- [{{#if label}}{{label}}{{else}}{{url}}{{/if}}]({{url}})
+{{/each}}
+{{/if}}
+
+{{#if service.monitoring.dashboards}}
+#### Dashboards
+
+Dashboards for this service can be found at:
+
+{{#each service.monitoring.dashboards}}
+- [{{#if label}}{{label}}{{else}}{{url}}{{/if}}]({{url}})
+{{/each}}
+{{/if}}

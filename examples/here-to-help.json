@@ -1,0 +1,65 @@
+{
+  "service": {
+    "name": "Here to Help",
+    "description": "A service for call-centre staff to support residents and manage cases",
+    "slug": "here-to-help",
+    "environments": [
+      {
+        "type": "production",
+        "name": "Service API",
+        "url": "https://api.example.com/v1"
+      },
+      {
+        "type": "production",
+        "name": "Web UI",
+        "url": "https://here-to-help.hackney.gov.uk/"
+      },
+      {
+        "type": "staging",
+        "name": "Service API",
+        "url": "https://api.staging.example.com/v1"
+      },
+      {
+        "type": "staging",
+        "name": "Web UI",
+        "url": "https://here-to-help-staging.hackney.gov.uk/"
+      }
+    ],
+    "repositories": [
+      {
+        "url": "https://github.com/LBHackney-IT/coronavirus-here-to-help-frontend",
+        "label": "Web UI"
+      },
+      {
+        "url": "https://github.com/LBHackney-IT/cv-19-res-support-v3",
+        "label": "Service API"
+      },
+      {
+        "url": "https://github.com/LBHackney-IT/here-to-help-data-ingestion",
+        "label": "Data Ingestion service"
+      }
+    ],
+    "monitoring": {
+      "logs": [
+        {
+          "label": "Cloudwatch (Production)",
+          "url": "https://eu-west-2.console.aws.amazon.com/cloudwatch/home?region=eu-west-2#logsV2:log-groups/log-group/$252Faws$252Flambda$252Fhere-to-help-frontend-production"
+        }
+      ],
+      "dashboards": []
+    },
+    "contacts": [
+      {
+        "name": "First Last",
+        "role": "Head of Service",
+        "contact": "first.last@hackney.gov.uk"
+      }
+    ],
+    "architecture": [
+      {
+        "url": "https://github.com/LBHackney-IT/cv-19-res-support-v3/tree/development/docs/diagrams",
+        "label": "C4 architecture diagrams"
+      }
+    ]
+  }
+}
