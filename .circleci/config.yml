@@ -36,7 +36,9 @@ jobs:
       - *attach_workspace
       - run:
           name: Run tests
-          command: yarn test
+          command: yarn test --ci --reporters=default --reporters=jest-junit
+      - store_test_results:
+        path: .
 
   build-library:
     executor: node-executor

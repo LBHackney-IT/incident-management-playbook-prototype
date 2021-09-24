@@ -1,6 +1,9 @@
 # Node
 node_modules
 
+# Tests
+junit.xml
+
 # macOS
 .DS_Store
 
