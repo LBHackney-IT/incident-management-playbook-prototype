@@ -51,8 +51,19 @@ jobs:
     steps:
       - *attach_workspace
       - run:
-          name: Build example site
+          name: Generate example site
           command: yarn demo
+      - run:
+          name: Build example site
+          working_directory: ./example-service-docs
+          command: yarn && yarn build
+      - run:
+          name: Zip example site
+          working_directory: ./example-service-docs/build
+          command: zip -r ../../output.zip *
+      - store_artifacts:
+          path: ./output.zip
+          destination: output.zip
 
 workflows:
   version: 2
