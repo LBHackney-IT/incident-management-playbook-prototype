@@ -85,7 +85,7 @@ jobs:
           name: Build library
           command: yarn build
 
-  build-deploy-example-development:
+  build-deploy-development:
     executor: node-executor
     environment:
         aws-region: eu-west-2
@@ -141,7 +141,7 @@ workflows:
             # filters:
             #     branches:
             #         only: main
-      - build-deploy-example-development:
+      - build-deploy-development:
             stage: "development"
             requires:
                 - terraform-init-and-apply-to-development
