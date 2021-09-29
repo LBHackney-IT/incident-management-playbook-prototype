@@ -114,6 +114,7 @@ jobs:
                 command: yarn && yarn build
             - run:
                 name: Deploy to S3
+                working_directory: ./example-service-docs
                 command: aws s3 sync build s3://development-incident-management-playbooks-prototype
 
     assume-role-development:
@@ -127,7 +128,7 @@ jobs:
         steps:
             - terraform-init-then-apply:
                   environment: "development"
-                  
+
 workflows:
     version: 2
     continuous-delivery:
@@ -159,6 +160,3 @@ workflows:
                 #   filters:
                 #       branches:
                 #           only: main
-            # filters:
-            #     branches:
-            #         only: main
