@@ -103,7 +103,7 @@ jobs:
           command: yarn && yarn build
       - run:
           name: Deploy to S3
-          command: aws s3 sync build s3://incident-management-playbooks-prototype-development
+          command: aws s3 sync build s3://development-incident-management-playbooks-prototype
 
     assume-role-development:
         executor: docker-python
@@ -132,19 +132,19 @@ workflows:
             context: api-assume-role-development-context
             requires:
                 - unit-tests
-            filters:
-                branches:
-                    only: main
+            # filters:
+            #     branches:
+            #         only: main
       - terraform-init-and-apply-to-development:
             requires:
                 - assume-role-development
-            filters:
-                branches:
-                    only: main
+            # filters:
+            #     branches:
+            #         only: main
       - build-deploy-example-development:
             stage: "development"
             requires:
                 - terraform-init-and-apply-to-development
-            filters:
-                branches:
-                    only: main
+            # filters:
+            #     branches:
+            #         only: main
